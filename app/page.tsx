@@ -64,8 +64,8 @@ export default function HomePage() {
             <div className="mb-12 max-w-2xl mx-auto">
               <div className="relative h-[400px] rounded-2xl border-2 border-white/20 shadow-2xl overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=1200&q=80"
-                  alt="Professional painter on step ladder painting a living room wall"
+                  src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=1200&q=80"
+                  alt="Professional painter on step ladder painting an interior wall"
                   className="w-full h-full object-cover"
                   loading="eager"
                 />

@@ -60,17 +60,16 @@ export default function HomePage() {
               {siteConfig.whatsapp.enabled && <CTAButton variant="whatsapp" size="lg" className="btn-glow" />}
             </div>
 
-            {/* Hero illustration placeholder */}
+            {/* Hero image */}
             <div className="mb-12 max-w-2xl mx-auto">
-              <div className="relative h-[400px] bg-gradient-to-br from-blue-400/30 to-purple-500/30 rounded-2xl backdrop-blur-sm border-2 border-white/20 shadow-2xl flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 bg-white/5"></div>
-                <div className="relative z-10 text-center space-y-4">
-                  <div className="text-8xl opacity-60 flex gap-8 justify-center">
-                    <span>🎨</span>
-                    <span>🖌️</span>
-                  </div>
-                  <p className="text-white/80 font-medium text-lg">Professional Painting Services</p>
-                </div>
+              <div className="relative h-[400px] rounded-2xl border-2 border-white/20 shadow-2xl overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=1200&q=80"
+                  alt="Professional painter on step ladder painting a living room wall"
+                  className="w-full h-full object-cover"
+                  loading="eager"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent"></div>
               </div>
             </div>
 

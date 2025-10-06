@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "name": "Sarah M.",
+    "area": "Islington N1",
+    "jobType": "Interior Painting – 2-bed flat",
+    "rating": 5,
+    "quote": "Immaculate finish and zero mess. They worked around our schedule and were done ahead of time."
+  },
+  {
+    "id": 2,
+    "name": "Daniel K.",
+    "area": "Finchley N3",
+    "jobType": "Exterior Painting – Victorian terrace",
+    "rating": 5,
+    "quote": "Careful prep and great attention to detail. The frontage looks brand new."
+  },
+  {
+    "id": 3,
+    "name": "Priya R.",
+    "area": "Crouch End N8",
+    "jobType": "Wallpapering – feature wall",
+    "rating": 5,
+    "quote": "Crisp seams and perfect pattern match. Exactly what we wanted."
+  },
+  {
+    "id": 4,
+    "name": "Alex P.",
+    "area": "Highgate N6",
+    "jobType": "Woodwork & Trim – doors and skirting",
+    "rating": 5,
+    "quote": "Beautifully smooth finishes and clean lines throughout."
+  },
+  {
+    "id": 5,
+    "name": "Laura T.",
+    "area": "Muswell Hill N10",
+    "jobType": "Plaster & Repairs – hallway and stairs",
+    "rating": 5,
+    "quote": "Repairs are invisible and the paint finish is flawless."
+  },
+  {
+    "id": 6,
+    "name": "Michael B.",
+    "area": "Wood Green N22",
+    "jobType": "Commercial – café refresh",
+    "rating": 5,
+    "quote": "Completed overnight with minimal disruption. Customers noticed immediately."
+  },
+  {
+    "id": 7,
+    "name": "Helen W.",
+    "area": "Islington N1",
+    "jobType": "Interior Painting – loft conversion",
+    "rating": 5,
+    "quote": "Great advice on durable paints and a bright, even finish."
+  },
+  {
+    "id": 8,
+    "name": "Tom & Elise",
+    "area": "Finchley Central N3",
+    "jobType": "Exterior & Woodwork – windows and fascia",
+    "rating": 5,
+    "quote": "Prepped properly and sealed everything. Looks sharp and should last."
+  }
+]

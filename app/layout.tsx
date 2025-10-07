@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -100,6 +101,16 @@ export default function RootLayout({
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
+
+        {/* ElevenLabs Conversational AI Widget */}
+        <div dangerouslySetInnerHTML={{
+          __html: '<elevenlabs-convai agent-id="agent_7801k6zbc7e6e9jahw7drdh87bzf"></elevenlabs-convai>'
+        }} />
+
+        <Script
+          src="https://unpkg.com/@elevenlabs/convai-widget-embed"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );

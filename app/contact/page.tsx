@@ -32,12 +32,45 @@ export default function ContactPage() {
     preferredDate: '',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submission will be implemented later
-    console.log('Form submitted:', formData);
-    alert('Form submission will be connected to your backend. For now, please call or email us directly.');
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        // Reset form
+        setFormData({
+          name: '',
+          phone: '',
+          email: '',
+          postcode: '',
+          propertyType: '',
+          rooms: '',
+          preferredDate: '',
+          message: '',
+        });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -288,13 +321,37 @@ export default function ContactPage() {
                   </div>
                 </div>
 
+                {/* Success/Error Messages */}
+                {submitStatus === 'success' && (
+                  <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                    <p className="text-green-800 font-medium">
+                      ✓ Thank you! Your quote request has been submitted successfully.
+                    </p>
+                    <p className="text-green-700 text-sm mt-1">
+                      We'll get back to you within 24 hours.
+                    </p>
+                  </div>
+                )}
+
+                {submitStatus === 'error' && (
+                  <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                    <p className="text-red-800 font-medium">
+                      ✗ Something went wrong. Please try again or call us directly.
+                    </p>
+                    <p className="text-red-700 text-sm mt-1">
+                      Phone: {siteConfig.business.phoneFormatted}
+                    </p>
+                  </div>
+                )}
+
                 {/* Submit Button */}
                 <div className="pt-4">
                   <button
                     type="submit"
-                    className="w-full sm:w-auto px-8 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition-colors focus:ring-4 focus:ring-blue-200"
+                    disabled={isSubmitting}
+                    className="w-full sm:w-auto px-8 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition-colors focus:ring-4 focus:ring-blue-200 disabled:bg-gray-400 disabled:cursor-not-allowed"
                   >
-                    Request Free Quote
+                    {isSubmitting ? 'Sending...' : 'Request Free Quote'}
                   </button>
                   <p className="text-sm text-gray-600 mt-3">
                     We'll get back to you within 24 hours

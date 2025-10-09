@@ -23,6 +23,37 @@ export default function HomePage() {
     { name: 'Home', url: siteConfig.url },
   ]);
 
+  // Generate review schemas for featured testimonials
+  const reviewSchemas = featuredTestimonials.map((testimonial) => ({
+    '@context': 'https://schema.org',
+    '@type': 'Review',
+    '@id': `${siteConfig.url}/#review-${testimonial.id}`,
+    itemReviewed: {
+      '@type': 'LocalBusiness',
+      '@id': `${siteConfig.url}#organization`,
+      name: siteConfig.business.name,
+      image: `${siteConfig.url}/og-image.jpg`,
+      telephone: siteConfig.business.phone,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: siteConfig.business.address.city,
+        addressRegion: siteConfig.business.address.region,
+        addressCountry: siteConfig.business.address.country,
+      },
+    },
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: testimonial.rating,
+      bestRating: 5,
+      worstRating: 1,
+    },
+    author: {
+      '@type': 'Person',
+      name: testimonial.name,
+    },
+    reviewBody: testimonial.quote,
+  }));
+
   return (
     <>
       <script
@@ -31,6 +62,15 @@ export default function HomePage() {
           __html: JSON.stringify(breadcrumbSchema),
         }}
       />
+      {reviewSchemas.map((schema, index) => (
+        <script
+          key={`review-${index}`}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schema),
+          }}
+        />
+      ))}
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 text-white py-16 md:py-24 overflow-hidden">

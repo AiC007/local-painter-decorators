@@ -94,7 +94,17 @@ export function generateReviewSchema(review: {
     '@context': 'https://schema.org',
     '@type': 'Review',
     itemReviewed: {
+      '@type': 'LocalBusiness',
       '@id': `${siteConfig.url}#organization`,
+      name: siteConfig.business.name,
+      image: `${siteConfig.url}/og-image.jpg`,
+      telephone: siteConfig.business.phone,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: siteConfig.business.address.city,
+        addressRegion: siteConfig.business.address.region,
+        addressCountry: siteConfig.business.address.country,
+      },
     },
     author: {
       '@type': 'Person',
@@ -104,6 +114,7 @@ export function generateReviewSchema(review: {
       '@type': 'Rating',
       ratingValue: review.rating.toString(),
       bestRating: '5',
+      worstRating: '1',
     },
     reviewBody: review.quote,
   };

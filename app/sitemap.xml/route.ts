@@ -1,37 +1,26 @@
 import { NextResponse } from 'next/server';
+import { siteConfig, services, locations } from '@/lib/config';
 
 export async function GET() {
-  const baseUrl = 'https://www.localpainterdecorators.co.uk';
+  const baseUrl = siteConfig.url;
   const currentDate = new Date().toISOString();
 
-  // Define all service pages
-  const services = [
-    'interior-painting',
-    'exterior-painting',
-    'wallpapering',
-    'commercial-decorating',
-    'specialist-coatings',
-    'property-maintenance',
-  ];
+  // Get service slugs
+  const serviceSlugs = services.map(s => s.slug);
 
-  // Define all location pages
-  const locations = [
-    'london',
-    'manchester',
-    'birmingham',
-    'leeds',
-    'bristol',
-    'edinburgh',
-  ];
+  // Get location slugs
+  const locationSlugs = locations.map(l => l.slug);
 
   // Define all static pages
   const staticPages = [
     { url: '', priority: '1.0', changefreq: 'weekly' }, // Homepage
+    { url: '/services', priority: '0.8', changefreq: 'monthly' },
     { url: '/gallery', priority: '0.8', changefreq: 'weekly' },
     { url: '/testimonials', priority: '0.8', changefreq: 'weekly' },
     { url: '/about', priority: '0.7', changefreq: 'monthly' },
     { url: '/faqs', priority: '0.7', changefreq: 'monthly' },
     { url: '/contact', priority: '0.9', changefreq: 'monthly' },
+    { url: '/areas-we-cover', priority: '0.7', changefreq: 'monthly' },
   ];
 
   // Define legal pages
@@ -61,7 +50,7 @@ ${staticPages
   .join('\n')}
 
   <!-- Service Pages -->
-${services
+${serviceSlugs
   .map(
     (service) => `  <url>
     <loc>${baseUrl}/services/${service}</loc>
@@ -73,10 +62,10 @@ ${services
   .join('\n')}
 
   <!-- Location Pages -->
-${locations
+${locationSlugs
   .map(
     (location) => `  <url>
-    <loc>${baseUrl}/locations/${location}</loc>
+    <loc>${baseUrl}/areas-we-cover/${location}</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>

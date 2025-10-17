@@ -4,10 +4,10 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   const host = request.headers.get('host');
 
-  // Redirect www to non-www (canonical)
-  if (host?.startsWith('www.')) {
+  // Redirect non-www to www (canonical) - matches Vercel configuration
+  if (host === 'localpainteranddecorators.co.uk') {
     const url = request.nextUrl.clone();
-    url.host = host.replace('www.', '');
+    url.host = 'www.localpainteranddecorators.co.uk';
     return NextResponse.redirect(url, 301);
   }
 

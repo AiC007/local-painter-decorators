@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Local Painter & Decorators",
   description: "Professional painting and decorating services across North London. Tidy & reliable, quality materials, clear quotes, insured & guaranteed.",
-  url: "https://localpainteranddecorators.co.uk",
+  url: "https://www.localpainteranddecorators.co.uk",
 
   // NAP (Name, Address, Phone) - KEEP CONSISTENT EVERYWHERE
   business: {

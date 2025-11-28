@@ -76,7 +76,7 @@ export default function AboutPage() {
               Founded in {siteConfig.business.establishedYear}, Local Painter & Decorators began with a simple mission: to provide
               North London homeowners and businesses with reliable, high-quality painting and decorating
               services at fair prices. What started as a small operation serving Islington has grown into
-              a trusted name across six North London postcodes.
+              a trusted name across nine North London postcodes.
             </p>
             <p className="text-gray-700 leading-relaxed mb-4">
               Our success comes from treating every project—whether it's a single room refresh or a
@@ -197,7 +197,7 @@ export default function AboutPage() {
             Areas We Cover
           </h2>
           <p className="text-gray-700 mb-6 leading-relaxed">
-            We provide professional painting and decorating services across six North London areas:
+            We provide professional painting and decorating services across nine North London areas:
           </p>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
             {locations.map((location) => (

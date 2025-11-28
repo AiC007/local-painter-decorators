@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { siteConfig } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | Local Painter & Decorators',
@@ -6,6 +7,16 @@ export const metadata: Metadata = {
 };
 
 export default function PrivacyPolicyPage() {
+  const { business } = siteConfig;
+  const addressParts = [
+    business.address.street,
+    business.address.city,
+    business.address.region,
+    business.address.postcode,
+    business.address.country,
+  ].filter(Boolean);
+  const formattedAddress = addressParts.join(', ');
+
   return (
     <div className="min-h-screen bg-gray-50 py-16">
       <div className="container mx-auto px-4">
@@ -20,7 +31,11 @@ export default function PrivacyPolicyPage() {
                 Local Painter & Decorators (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) is committed to protecting your privacy and personal data. This Privacy Policy explains how we collect, use, store, and protect your information in accordance with the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018.
               </p>
               <p className="text-gray-700 mb-4">
-                Our registered office is located at [Company Address]. We are registered in England and Wales under company number [Company Number]. For data protection queries, please contact us at [Privacy Email].
+                Our registered office is located at {formattedAddress || business.serviceArea}. We operate across {business.serviceArea} under registration number {business.registrationNumber}. For data protection queries, please contact us at{' '}
+                <a href={`mailto:${business.email}`} className="text-blue-600 hover:text-blue-800 underline">
+                  {business.email}
+                </a>
+                .
               </p>
             </section>
 
@@ -136,9 +151,21 @@ export default function PrivacyPolicyPage() {
                 If you have any questions about this Privacy Policy or wish to exercise your data protection rights, please contact us:
               </p>
               <ul className="list-none mb-4 text-gray-700">
-                <li><strong>Email:</strong> [Privacy Email]</li>
-                <li><strong>Phone:</strong> [Phone Number]</li>
-                <li><strong>Address:</strong> [Company Address]</li>
+                <li>
+                  <strong>Email:</strong>{' '}
+                  <a href={`mailto:${business.email}`} className="text-blue-600 hover:text-blue-800 underline">
+                    {business.email}
+                  </a>
+                </li>
+                <li>
+                  <strong>Phone:</strong>{' '}
+                  <a href={`tel:${business.phone}`} className="text-blue-600 hover:text-blue-800 underline">
+                    {business.phoneFormatted}
+                  </a>
+                </li>
+                <li>
+                  <strong>Address:</strong> {formattedAddress || business.serviceArea}
+                </li>
               </ul>
               <p className="text-gray-700 mb-4">
                 You also have the right to lodge a complaint with the Information Commissioner&apos;s Office (ICO), the UK supervisory authority for data protection issues, at <a href="https://ico.org.uk" className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">www.ico.org.uk</a>.

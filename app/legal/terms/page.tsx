@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { siteConfig } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: 'Terms of Service | Local Painter & Decorators',
@@ -6,6 +7,16 @@ export const metadata: Metadata = {
 };
 
 export default function TermsOfServicePage() {
+  const { business } = siteConfig;
+  const addressParts = [
+    business.address.street,
+    business.address.city,
+    business.address.region,
+    business.address.postcode,
+    business.address.country,
+  ].filter(Boolean);
+  const formattedAddress = addressParts.join(', ');
+
   return (
     <div className="min-h-screen bg-gray-50 py-16">
       <div className="container mx-auto px-4">
@@ -20,7 +31,7 @@ export default function TermsOfServicePage() {
                 Welcome to Local Painter & Decorators. These Terms of Service (&quot;Terms&quot;) govern your use of our website and services. By accessing our website or engaging our services, you agree to be bound by these Terms. If you do not agree with any part of these Terms, please do not use our website or services.
               </p>
               <p className="text-gray-700 mb-4">
-                Local Painter & Decorators is a trading name of [Company Legal Name], registered in England and Wales under company number [Company Number]. Our registered office is at [Company Address].
+                Local Painter & Decorators operates across {business.serviceArea} in England and Wales under registration number {business.registrationNumber}. Our registered office is at {formattedAddress || business.serviceArea}.
               </p>
             </section>
 
@@ -151,9 +162,21 @@ export default function TermsOfServicePage() {
                 If you have any questions about these Terms of Service, please contact us:
               </p>
               <ul className="list-none mb-4 text-gray-700">
-                <li><strong>Email:</strong> [Contact Email]</li>
-                <li><strong>Phone:</strong> [Phone Number]</li>
-                <li><strong>Address:</strong> [Company Address]</li>
+                <li>
+                  <strong>Email:</strong>{' '}
+                  <a href={`mailto:${business.email}`} className="text-blue-600 hover:text-blue-800 underline">
+                    {business.email}
+                  </a>
+                </li>
+                <li>
+                  <strong>Phone:</strong>{' '}
+                  <a href={`tel:${business.phone}`} className="text-blue-600 hover:text-blue-800 underline">
+                    {business.phoneFormatted}
+                  </a>
+                </li>
+                <li>
+                  <strong>Address:</strong> {formattedAddress || business.serviceArea}
+                </li>
               </ul>
             </section>
           </div>

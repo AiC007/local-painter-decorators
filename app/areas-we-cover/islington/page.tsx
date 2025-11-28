@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { siteConfig, services, locations } from '@/lib/config';
-import CTABanner from '@/components/ui/CTABanner';
 import FAQAccordion from '@/components/ui/FAQAccordion';
 import { generateBreadcrumbSchema, generateLocalBusinessSchema, generateFAQSchema } from '@/lib/schema';
 import { ArrowRight, Phone, MapPin } from 'lucide-react';

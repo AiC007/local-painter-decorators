@@ -12,7 +12,7 @@ Disallow: /_next/
 Disallow: /private/
 
 # Sitemap location
-Sitemap: https://www.localpainterdecorators.co.uk/sitemap.xml
+Sitemap: https://www.localpainteranddecorators.co.uk/sitemap.xml
 
 # Specific rules for major search engines
 User-agent: Googlebot

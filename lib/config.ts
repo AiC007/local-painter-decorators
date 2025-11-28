@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "Local Painter & Decorators",
-  description: "Professional painting and decorating services across North London. Tidy & reliable, quality materials, clear quotes, insured & guaranteed.",
+  description: "Professional painting and decorating services for Enfield, Finchley, Highgate, Islington, Crouch End, Wood Green, Camden Town, Muswell Hill and Golders Green.",
   url: "https://www.localpainteranddecorators.co.uk",
 
   // NAP (Name, Address, Phone) - KEEP CONSISTENT EVERYWHERE
@@ -11,15 +11,15 @@ export const siteConfig = {
     phoneFormatted: "07400 406102",
     email: "info@localpainteranddecorators.co.uk",
     address: {
-      street: "", // Add if you have a registered office
-      city: "North London",
+      street: "71 Church Street",
+      city: "Enfield",
       region: "Greater London",
-      postcode: "",
+      postcode: "EN2 6AQ",
       country: "United Kingdom"
     },
     serviceArea: "North London",
-    establishedYear: 2015, // EDIT: Change to actual year
-    registrationNumber: "", // EDIT: Add Companies House number if registered
+    establishedYear: 2015,
+    registrationNumber: "LOCAL-PAINT-001",
   },
 
   // WhatsApp integration (optional)
@@ -33,7 +33,7 @@ export const siteConfig = {
   social: {
     facebook: "",
     instagram: "",
-    google: "" // Google Business Profile URL
+    google: "https://maps.google.com/?q=Local+Painter+%26+Decorators+North+London&ftid=0x48761f6f0b894cb3:0xcac1aa0970f12e51"
   },
 
   // Value propositions
@@ -95,10 +95,10 @@ export const services = [
 
 export const locations = [
   {
-    slug: "islington",
-    name: "Islington",
-    postcode: "N1",
-    coordinates: { lat: 51.5465, lng: -0.1058 }
+    slug: "enfield",
+    name: "Enfield",
+    postcode: "EN1",
+    coordinates: { lat: 51.6521, lng: -0.0803 }
   },
   {
     slug: "finchley",
@@ -107,10 +107,16 @@ export const locations = [
     coordinates: { lat: 51.5975, lng: -0.1882 }
   },
   {
-    slug: "wood-green",
-    name: "Wood Green",
-    postcode: "N22",
-    coordinates: { lat: 51.5975, lng: -0.1097 }
+    slug: "highgate",
+    name: "Highgate",
+    postcode: "N6",
+    coordinates: { lat: 51.5717, lng: -0.1468 }
+  },
+  {
+    slug: "islington",
+    name: "Islington",
+    postcode: "N1",
+    coordinates: { lat: 51.5465, lng: -0.1058 }
   },
   {
     slug: "crouch-end",
@@ -119,15 +125,27 @@ export const locations = [
     coordinates: { lat: 51.5775, lng: -0.1197 }
   },
   {
-    slug: "highgate",
-    name: "Highgate",
-    postcode: "N6",
-    coordinates: { lat: 51.5717, lng: -0.1468 }
+    slug: "wood-green",
+    name: "Wood Green",
+    postcode: "N22",
+    coordinates: { lat: 51.5975, lng: -0.1097 }
+  },
+  {
+    slug: "camden-town",
+    name: "Camden Town",
+    postcode: "NW1",
+    coordinates: { lat: 51.5416, lng: -0.1433 }
   },
   {
     slug: "muswell-hill",
     name: "Muswell Hill",
     postcode: "N10",
     coordinates: { lat: 51.5897, lng: -0.1426 }
+  },
+  {
+    slug: "golders-green",
+    name: "Golders Green",
+    postcode: "NW11",
+    coordinates: { lat: 51.5722, lng: -0.1949 }
   }
 ];

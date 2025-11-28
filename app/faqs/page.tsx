@@ -21,7 +21,7 @@ const faqCategories = [
     questions: [
       {
         question: 'What areas do you cover in North London?',
-        answer: 'We provide professional painting and decorating services across six North London areas: Islington (N1), Finchley (N3), Wood Green (N22), Crouch End (N8), Highgate (N6), and Muswell Hill (N10). We\'re local to these areas, which means faster response times and competitive pricing.',
+        answer: 'We provide professional painting and decorating services across Enfield (EN1), Finchley (N3), Highgate (N6), Islington (N1), Crouch End (N8), Wood Green (N22), Camden Town (NW1), Muswell Hill (N10), and Golders Green (NW11). We\'re local to each neighbourhood, which means faster response times and competitive pricing.',
       },
       {
         question: 'Are you insured and do you guarantee your work?',

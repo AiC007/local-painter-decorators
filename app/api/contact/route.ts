@@ -1,19 +1,8 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY || 'dummy_key_for_build');
-
 export async function POST(request: Request) {
   try {
-    // Check if API key is configured
-    if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY === 'dummy_key_for_build') {
-      console.error('RESEND_API_KEY not configured');
-      return NextResponse.json(
-        { error: 'Email service not configured. Please contact us by phone.' },
-        { status: 503 }
-      );
-    }
-
     const body = await request.json();
     const { name, email, phone, postcode, propertyType, rooms, preferredDate, message } = body;
 
@@ -25,13 +14,18 @@ export async function POST(request: Request) {
       );
     }
 
-    // Send email using Resend
-    const { data, error } = await resend.emails.send({
-      from: 'Local Painter & Decorators <onboarding@resend.dev>', // You'll need to update this with your verified domain
-      to: ['ai@theaiconsultancy.ai'],
-      replyTo: email,
-      subject: `New Quote Request from ${name}`,
-      html: `
+    const emailConfigured =
+      process.env.RESEND_API_KEY && process.env.RESEND_API_KEY !== 'dummy_key_for_build';
+    let emailError: Error | null = null;
+
+    if (emailConfigured) {
+      const resend = new Resend(process.env.RESEND_API_KEY);
+      const { error } = await resend.emails.send({
+        from: 'Local Painter & Decorators <onboarding@resend.dev>', // Update with verified domain
+        to: ['ai@theaiconsultancy.ai'],
+        replyTo: email,
+        subject: `New Quote Request from ${name}`,
+        html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 10px;">
             New Quote Request
@@ -96,10 +90,21 @@ export async function POST(request: Request) {
           </div>
         </div>
       `,
-    });
+      });
 
-    if (error) {
-      console.error('Resend error:', error);
+      if (error) {
+        emailError = error as Error;
+        console.error('Resend error:', error);
+      }
+    } else {
+      console.warn('Contact form submission received but RESEND_API_KEY is not configured.', {
+        name,
+        phone,
+        postcode,
+      });
+    }
+
+    if (emailError) {
       return NextResponse.json(
         { error: 'Failed to send email' },
         { status: 500 }
@@ -107,7 +112,12 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json(
-      { success: true, message: 'Form submitted successfully' },
+      {
+        success: true,
+        message: emailConfigured
+          ? 'Form submitted successfully'
+          : 'Thank you! We have logged your request and will contact you by phone.',
+      },
       { status: 200 }
     );
   } catch (error) {

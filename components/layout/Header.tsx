@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { siteConfig } from '@/lib/config';
+import { siteConfig, services, locations } from '@/lib/config';
 import CTAButton from '@/components/ui/CTAButton';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
@@ -45,24 +45,15 @@ export default function Header() {
                 <Link href="/services" className="block px-4 py-3 hover:bg-gray-50 font-medium border-b border-gray-100">
                   All Services
                 </Link>
-                <Link href="/services/interior-painting" className="block px-4 py-2 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 text-sm hover:text-blue-600 transition-all">
-                  Interior Painting
-                </Link>
-                <Link href="/services/exterior-painting" className="block px-4 py-2 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 text-sm hover:text-blue-600 transition-all">
-                  Exterior Painting
-                </Link>
-                <Link href="/services/wallpapering" className="block px-4 py-2 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 text-sm hover:text-blue-600 transition-all">
-                  Wallpapering
-                </Link>
-                <Link href="/services/plaster-and-repairs" className="block px-4 py-2 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 text-sm hover:text-blue-600 transition-all">
-                  Plaster & Repairs
-                </Link>
-                <Link href="/services/woodwork-and-trim" className="block px-4 py-2 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 text-sm hover:text-blue-600 transition-all">
-                  Woodwork & Trim
-                </Link>
-                <Link href="/services/commercial-painting" className="block px-4 py-2 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 text-sm hover:text-blue-600 transition-all">
-                  Commercial Painting
-                </Link>
+                {services.map((service) => (
+                  <Link
+                    key={service.slug}
+                    href={`/services/${service.slug}`}
+                    className="block px-4 py-2 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 text-sm hover:text-blue-600 transition-all"
+                  >
+                    {service.name}
+                  </Link>
+                ))}
               </div>
             </div>
 
@@ -76,24 +67,15 @@ export default function Header() {
                 <Link href="/areas-we-cover" className="block px-4 py-3 hover:bg-gray-50 font-medium border-b border-gray-100">
                   All Areas
                 </Link>
-                <Link href="/areas-we-cover/islington" className="block px-4 py-2 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 text-sm hover:text-blue-600 transition-all">
-                  Islington
-                </Link>
-                <Link href="/areas-we-cover/finchley" className="block px-4 py-2 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 text-sm hover:text-blue-600 transition-all">
-                  Finchley
-                </Link>
-                <Link href="/areas-we-cover/wood-green" className="block px-4 py-2 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 text-sm hover:text-blue-600 transition-all">
-                  Wood Green
-                </Link>
-                <Link href="/areas-we-cover/crouch-end" className="block px-4 py-2 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 text-sm hover:text-blue-600 transition-all">
-                  Crouch End
-                </Link>
-                <Link href="/areas-we-cover/highgate" className="block px-4 py-2 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 text-sm hover:text-blue-600 transition-all">
-                  Highgate
-                </Link>
-                <Link href="/areas-we-cover/muswell-hill" className="block px-4 py-2 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 text-sm hover:text-blue-600 transition-all">
-                  Muswell Hill
-                </Link>
+                {locations.map((location) => (
+                  <Link
+                    key={location.slug}
+                    href={`/areas-we-cover/${location.slug}`}
+                    className="block px-4 py-2 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 text-sm hover:text-blue-600 transition-all capitalize"
+                  >
+                    {location.name}
+                  </Link>
+                ))}
               </div>
             </div>
 
@@ -149,24 +131,15 @@ export default function Header() {
                     <Link href="/services" className="py-1 text-sm text-gray-600 hover:text-blue-600">
                       All Services
                     </Link>
-                    <Link href="/services/interior-painting" className="py-1 text-sm text-gray-600 hover:text-blue-600">
-                      Interior Painting
-                    </Link>
-                    <Link href="/services/exterior-painting" className="py-1 text-sm text-gray-600 hover:text-blue-600">
-                      Exterior Painting
-                    </Link>
-                    <Link href="/services/wallpapering" className="py-1 text-sm text-gray-600 hover:text-blue-600">
-                      Wallpapering
-                    </Link>
-                    <Link href="/services/plaster-and-repairs" className="py-1 text-sm text-gray-600 hover:text-blue-600">
-                      Plaster & Repairs
-                    </Link>
-                    <Link href="/services/woodwork-and-trim" className="py-1 text-sm text-gray-600 hover:text-blue-600">
-                      Woodwork & Trim
-                    </Link>
-                    <Link href="/services/commercial-painting" className="py-1 text-sm text-gray-600 hover:text-blue-600">
-                      Commercial Painting
-                    </Link>
+                    {services.map((service) => (
+                      <Link
+                        key={service.slug}
+                        href={`/services/${service.slug}`}
+                        className="py-1 text-sm text-gray-600 hover:text-blue-600"
+                      >
+                        {service.name}
+                      </Link>
+                    ))}
                   </div>
                 )}
               </div>
@@ -185,24 +158,15 @@ export default function Header() {
                     <Link href="/areas-we-cover" className="py-1 text-sm text-gray-600 hover:text-blue-600">
                       All Areas
                     </Link>
-                    <Link href="/areas-we-cover/islington" className="py-1 text-sm text-gray-600 hover:text-blue-600">
-                      Islington
-                    </Link>
-                    <Link href="/areas-we-cover/finchley" className="py-1 text-sm text-gray-600 hover:text-blue-600">
-                      Finchley
-                    </Link>
-                    <Link href="/areas-we-cover/wood-green" className="py-1 text-sm text-gray-600 hover:text-blue-600">
-                      Wood Green
-                    </Link>
-                    <Link href="/areas-we-cover/crouch-end" className="py-1 text-sm text-gray-600 hover:text-blue-600">
-                      Crouch End
-                    </Link>
-                    <Link href="/areas-we-cover/highgate" className="py-1 text-sm text-gray-600 hover:text-blue-600">
-                      Highgate
-                    </Link>
-                    <Link href="/areas-we-cover/muswell-hill" className="py-1 text-sm text-gray-600 hover:text-blue-600">
-                      Muswell Hill
-                    </Link>
+                    {locations.map((location) => (
+                      <Link
+                        key={location.slug}
+                        href={`/areas-we-cover/${location.slug}`}
+                        className="py-1 text-sm text-gray-600 hover:text-blue-600 capitalize"
+                      >
+                        {location.name}
+                      </Link>
+                    ))}
                   </div>
                 )}
               </div>

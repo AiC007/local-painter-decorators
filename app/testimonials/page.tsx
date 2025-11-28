@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Star } from 'lucide-react';
-import { siteConfig } from '@/lib/config';
+import { siteConfig, locations } from '@/lib/config';
 import TestimonialCard from '@/components/ui/TestimonialCard';
 import CTABanner from '@/components/ui/CTABanner';
 import testimonialsData from '@/data/testimonials.json';
@@ -37,7 +37,7 @@ export default function TestimonialsPage() {
   };
 
   // Generate Review schema for each testimonial
-  const reviewSchemas = testimonialsData.map((testimonial, index) => ({
+  const reviewSchemas = testimonialsData.map((testimonial) => ({
     '@context': 'https://schema.org',
     '@type': 'Review',
     '@id': `${siteConfig.url}/testimonials#review-${testimonial.id}`,
@@ -241,12 +241,12 @@ export default function TestimonialsPage() {
             Our reviews come from satisfied customers in all our service areas:
           </p>
           <div className="flex flex-wrap gap-2">
-            {['Islington N1', 'Finchley N3', 'Wood Green N22', 'Crouch End N8', 'Highgate N6', 'Muswell Hill N10'].map((area) => (
+            {locations.map((location) => (
               <span
-                key={area}
+                key={location.slug}
                 className="px-4 py-2 bg-blue-50 text-blue-700 text-sm font-medium rounded-full border border-blue-200"
               >
-                {area}
+                {location.name} {location.postcode}
               </span>
             ))}
           </div>

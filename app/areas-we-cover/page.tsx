@@ -133,8 +133,9 @@ export default function AreasWeCoverPage() {
             Our North London Coverage Area
           </h2>
           <p className="text-gray-700 mb-8 max-w-3xl leading-relaxed">
-            We're proud to serve residents and businesses across these six North London areas.
-            Click through to learn more about our services in your specific location.
+            We're proud to serve residents and businesses across nine North London neighbourhoods—
+            from Enfield and Finchley to Camden Town, Muswell Hill and Golders Green. Click through
+            to learn more about our services in your specific location.
           </p>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -171,21 +172,18 @@ export default function AreasWeCoverPage() {
         {/* Coverage Details */}
         <section className="bg-gray-50 border border-gray-200 rounded-lg p-6 md:p-8 mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            Comprehensive Coverage Across All Six Areas
+            Comprehensive Coverage Across All Nine Areas
           </h2>
           <div className="prose prose-gray max-w-none">
             <p className="text-gray-700 leading-relaxed mb-4">
-              Our team covers the entire North London region, with particular expertise in
-              Islington (N1), Finchley (N3), Wood Green (N22), Crouch End (N8), Highgate (N6),
-              and Muswell Hill (N10). We understand the architectural diversity across these
-              areas and tailor our approach accordingly.
+              Our team covers Enfield (EN1), Finchley (N3), Highgate (N6), Islington (N1), Crouch End (N8),
+              Wood Green (N22), Camden Town (NW1), Muswell Hill (N10) and Golders Green (NW11). Each area has
+              its own character, from period terraces and garden suburb homes to creative canal-side lofts.
             </p>
             <p className="text-gray-700 leading-relaxed">
-              Whether you're in a converted flat in Islington, a Victorian terrace in
-              Crouch End, or a detached property in Highgate, we have the experience and
-              local knowledge to deliver exceptional results. Our vans are regularly in your
-              neighbourhood, which means we can combine site visits efficiently and pass
-              those savings on to you.
+              Whether you're refreshing a flat in Camden Town, restoring sash windows in Enfield or modernising
+              a family home in Golders Green, we already work on your street. Regular site runs mean faster quotes,
+              simplified logistics and decorators who understand the planning nuances of every postcode.
             </p>
           </div>
         </section>

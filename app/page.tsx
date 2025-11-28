@@ -1,9 +1,10 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { siteConfig, services, locations } from '@/lib/config';
 import CTAButton from '@/components/ui/CTAButton';
 import CTABanner from '@/components/ui/CTABanner';
 import TestimonialCard from '@/components/ui/TestimonialCard';
-import { CheckCircle, Shield, Clock, Award, Star, ArrowRight, MapPin } from 'lucide-react';
+import { CheckCircle, Shield, Clock, Award, Star, ArrowRight } from 'lucide-react';
 import testimonials from '@/data/testimonials.json';
 import { generateBreadcrumbSchema } from '@/lib/schema';
 import { Metadata } from 'next';
@@ -103,11 +104,13 @@ export default function HomePage() {
             {/* Hero image */}
             <div className="mb-12 max-w-2xl mx-auto">
               <div className="relative h-[400px] rounded-2xl border-2 border-white/20 shadow-2xl overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=1200&q=80"
+                <Image
+                  src="/og-image.jpg"
                   alt="Professional painter on step ladder painting an interior wall"
-                  className="w-full h-full object-cover"
-                  loading="eager"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 768px"
+                  className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent"></div>
               </div>

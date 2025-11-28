@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Filter, ImageIcon } from 'lucide-react';
 import { GalleryItem, GalleryCategory } from '@/types/gallery';
 
@@ -58,11 +59,12 @@ export default function GalleryGrid({ items, categories }: GalleryGridProps) {
               className="group relative bg-white rounded-lg overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover:scale-105 card-hover"
             >
               <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
-                <img
+                <Image
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  loading="lazy"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute top-3 left-3 bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full capitalize">
                   {item.category.replace('-', ' ')}

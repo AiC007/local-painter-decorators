@@ -37,7 +37,7 @@ export default function TestimonialsPage() {
   };
 
   // Generate Review schema for each testimonial
-  const reviewSchemas = testimonialsData.map((testimonial, index) => ({
+  const reviewSchemas = testimonialsData.map((testimonial) => ({
     '@context': 'https://schema.org',
     '@type': 'Review',
     '@id': `${siteConfig.url}/testimonials#review-${testimonial.id}`,
